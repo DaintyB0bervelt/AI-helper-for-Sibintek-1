@@ -1,0 +1,161 @@
+:root {
+    --main-bg-color: #fff;
+    --highlight-color: #fc0;
+    --text-color: #333;
+    --bot-bg-color: #e0e0e0;
+    --user-bg-color: #fc0;
+    --user-text-color: white;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: #f3f3f3;
+}
+
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--main-bg-color);
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    position: relative;
+}
+
+nav a::after {
+    content: "/";
+    position: absolute;
+    right: -10px;
+    color: var(--highlight-color);
+    font-weight: bold;
+}
+
+nav a:last-child::after {
+    content: "";
+}
+
+/* Чат */
+
+.chat-container {
+    width: 90%;
+    max-width: 800px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background: var(--main-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-box {
+    padding: 20px;
+    height: 700px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-behavior: smooth; /* плавная прокрутка */
+}
+
+.message {
+    max-width: 80%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-wrap; /* Добавлено для сохранения пробелов и переносов */
+}
+
+
+.user-message {
+    align-self: flex-end;
+    background-color: var(--user-bg-color);
+    color: var(--user-text-color);
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: var(--bot-bg-color);
+    color: black;
+}
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--highlight-color);
+    color: var(--user-text-color);
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Состояние фокуса для доступности */
+button:focus, input[type="text"]:focus {
+    outline: 2px solid var(--highlight-color);
+}
+
+/* Адаптивность для небольших экранов */
+@media (max-width: 600px) {
+    .chat-box {
+        height: 500px;
+    }
+
+    .message {
+        max-width: 100%;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    nav a {
+        font-size: 14px;
+    }
+}
